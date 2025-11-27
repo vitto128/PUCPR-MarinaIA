@@ -5,8 +5,24 @@ public class Main {
     static states CurrentState = states.working;
     static int hunger = 0;
     static int fatigue = 0;
-
     public static void JucaState() {
+
+
+        Juca juca = new Juca();
+        juca.setState(new Working(juca));
+
+        while (true) {
+            try {
+                Thread.sleep(1000);
+            }
+            catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+
+            juca.update();
+        }
+    }
+    public static void JucaSwitch() {
         while (true) {
             try {
                 Thread.sleep(1000);
@@ -54,8 +70,9 @@ public class Main {
             }
         }
     }
-    public static void main(String[] args) {
-        JucaState();
 
+    public static void main(String[] args) {
+        // JucaSwitch();
+        JucaState();
     }
 }
